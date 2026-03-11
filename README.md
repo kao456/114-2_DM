@@ -29,7 +29,7 @@
 | 授課對象 | 大二以上 |
 | 每週上課 | 3 小時 |
 | 教科書 | 機器學習課程教學大綱 Ch0 ~ Ch21 |
-| 課程 Colab 程式 | [Google Colab for AI](https://sites.google.com/view/oneline-python/google-colab-for-ai?authuser=0) |
+| 課程 Colab 程式 | [Colab 人工智慧二版](https://sites.google.com/view/oneline-python/colab%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E4%BA%8C%E7%89%88?authuser=0) |
 | 實作環境 | Google Colab、Python + Anaconda、GitHub、VS Code |
 
 ## 課程說明
@@ -69,6 +69,7 @@
 ### 第 1 週｜課程導論與開發環境建置
 
 - 對應教科書：Ch0 機器學習介紹、Ch1 Python 基本功能介紹
+- Colab 程式：[1 AI-python](https://colab.research.google.com/drive/1OD6BU0CpZ27ixsG2OsA2PHWAF6IfFTVg?usp=sharing)
 - 教學內容：
   - 課程大綱、評分方式、作業繳交流程說明
   - 人工智慧、機器學習、深度學習的定義與差異
@@ -80,6 +81,7 @@
 ### 第 2 週｜Pandas DataFrame 與資料操作
 
 - 對應教科書：Ch2 Pandas DataFrame 介紹
+- Colab 程式：[2 Pandas DataFrame 介紹](https://colab.research.google.com/drive/1-Etp0nO0UANTN0Ynd0j9HiZcuM3R5LlB?usp=sharing)
 - 教學內容：
   - 創立 DataFrame：字典方式建立、列索引鍵設定
   - DataFrame 重要屬性、Series 與 DataFrame 差異
@@ -90,6 +92,7 @@
 ### 第 3 週｜資料預處理
 
 - 對應教科書：Ch3 資料預處理
+- Colab 程式：[3 資料預處理](https://colab.research.google.com/drive/12jJkVB2cxrVVw8JyNYpP3eL9q5pVi2NI?usp=sharing)
 - 教學內容：
   - 數值型預處理：SimpleImputer、StandardScaler
   - 類別型預處理：OneHotEncoder
@@ -119,6 +122,7 @@
 ### 第 7 週｜迴歸分析：線性迴歸與羅吉斯迴歸 + **小考 1**
 
 - 對應教科書：Ch4 簡單線性迴歸、Ch5 多元迴歸、Ch6 羅吉斯迴歸
+- Colab 程式：[4 簡單線性迴歸](https://colab.research.google.com/drive/18nr_4pOkjzvs-5uJoPWfKW5cU97KH0qP?usp=sharing)、[5 多元線性迴歸](https://colab.research.google.com/drive/1iXifxI-AoJlkVMravR5rXP_2pDn8yYtS?usp=sharing)、[6 羅吉斯迴歸](https://colab.research.google.com/drive/1gaq4UpvRb4CXUrgt_k6lJhMUAsakd1Ly?usp=sharing)
 - 教學內容：
   - LinearRegression、PolynomialFeatures、多元迴歸
   - 羅吉斯迴歸、混淆矩陣、ROC 曲線與 AUC
@@ -126,6 +130,7 @@
 ### 第 8 週｜KNN、SVM 與決策樹
 
 - 對應教科書：Ch7 K 最近鄰、Ch8 支持向量機、Ch9 決策樹
+- Colab 程式：[7 KNN, PCA and SelectKBest](https://colab.research.google.com/drive/1r6TRIRFWD5UmP8KTMWZaeo8W66b1LMPz?usp=sharing)、[8 SVM - titanic](https://colab.research.google.com/drive/1ZXKuUxTmRIaQcd6OVRtcNlKw3E0fB041?usp=sharing)、[9 Tree - titanic](https://colab.research.google.com/drive/1TBS0721z22BuJbkuKQ9nwtaZh1G-jH8n?usp=sharing)
 - 教學內容：
   - KNN 建構、標準化影響、K 值選擇、PCA 降維
   - SVC 模型、鐵達尼號實作
@@ -140,6 +145,7 @@
 ### 第 10 週｜分類模板、交叉驗證與網格搜尋 + Prompt Engineering 入門
 
 - 對應教科書：Ch10 分類模板、Ch11 交叉驗證、Ch12 網格搜尋
+- Colab 程式：[10 分類預測模版](https://colab.research.google.com/drive/1OqudZ0PDJ3YaUQPiOwilPG9vcCX2O9jt)、[11 交叉驗證](https://colab.research.google.com/drive/1YvHf8e4V5-OFlAClYlfgaE6xBJRvxNvo?usp=sharing)、[12 模型參數挑選和網格搜尋](https://colab.research.google.com/drive/1o-I1M7RAbANMsawstOypcshUuDmNBaQ2?usp=sharing)
 - 教學內容：
   - 分類預測模板、K-Fold 交叉驗證、GridSearchCV
   - **Prompt Engineering 入門**：好 Prompt 的五個要素
@@ -148,6 +154,7 @@
 ### 第 11 週｜組合預測器 + AI 輔助 + **小考 2**
 
 - 對應教科書：Ch13 組合預測器
+- Colab 程式：[13 整合預測器 ensemble](https://colab.research.google.com/drive/1iUh3CxSCpC2AvcsxSpwLI40bRHIcp8gK?usp=sharing)
 - 教學內容：
   - Bagging、隨機森林、AdaBoost、Gradient Boosting、XGBoost
   - AI 輔助模型選擇與調校
@@ -155,6 +162,7 @@
 ### 第 12 週｜實務專案：員工流失率預測與不均衡資料處理
 
 - 對應教科書：Ch14 員工流失率預測、Ch15 客戶流失率預測、Ch16 信用偵測
+- Colab 程式：[14 Employee Churn](https://colab.research.google.com/drive/17SBqnkGvdgzrs5SiQrtmPPJjbA4CDyzM?usp=sharing)、[15 Telcom Customer Churn](https://colab.research.google.com/drive/1JbjxMhG2G3YsAfuYeOoaXr7V-TN1GpXI?usp=sharing)、[16 Credit Card](https://colab.research.google.com/drive/1jiHDRH4iymBd70dJUcOCj9GsuwQqrtOM?usp=sharing)
 - 教學內容：
   - 完整建模流程、class_weight、向下取樣、向上取樣
   - AI 輔助不均衡資料處理
@@ -162,6 +170,7 @@
 ### 第 13 週｜文字處理與商品評論分析
 
 - 對應教科書：Ch17 文字處理、Ch18 Amazon 商品評論分析
+- Colab 程式：[17 NewsGroup](https://colab.research.google.com/drive/1L8HjJQEZC02gYgh8eUz-rgDJvwe4ewaM?usp=sharing)、[18 Amazon 商品評論分析](https://colab.research.google.com/drive/1ke8WmJjgI2l4S3fJF612tNK8YOiGkuzG?usp=sharing)
 - 教學內容：
   - 詞袋模型、n-gram、TF-IDF、LDA 主題探索
   - Amazon 評論分析、Naive Bayes
@@ -169,6 +178,7 @@
 ### 第 14 週｜中文文字處理與 K-Means 集群分析 + **小考 3**
 
 - 對應教科書：Ch19 中文文字處理、Ch20 K-means 集群分析
+- Colab 程式：[19 中文文字處理](https://colab.research.google.com/drive/1Srjshd1h18g3jvChUaQ5YHjC0k7sjDsO?usp=sharing)、[20 Kmeans](https://colab.research.google.com/drive/1V3CgZazr9Le0hZYAUEwsXf7maHxAok0H?usp=sharing)
 - 教學內容：
   - jieba 中文斷詞、文字雲
   - K-Means、Inertia、手肘法
@@ -176,6 +186,7 @@
 ### 第 15 週｜Keras 深度學習入門 + **小考 4**
 
 - 對應教科書：Ch21 Keras 深度學習
+- Colab 程式：[21 Keras 深度學習](https://colab.research.google.com/drive/18-yVk7MjXC7Cde971SC8FrOCngIfP9R7?usp=sharing)
 - 教學內容：
   - 手寫數字辨識、Keras 架構、KerasClassifier
   - 傳統機器學習 vs 深度學習比較
