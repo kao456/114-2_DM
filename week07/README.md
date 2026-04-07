@@ -413,10 +413,3 @@ A3：???
 
 ---
 
-## 繳交 Checklist
-
-- [ ] week07/q1_regression.txt 包含完整程式碼、簡單/多元迴歸結果與比較
-- [ ] week07/q2_logistic.txt 包含完整程式碼、係數分析、混淆矩陣、ROC 曲線
-- [ ] week07/q3_concept.txt 包含三題觀念回答
-- [ ] 已 push 到自己的 Fork
-- [ ] 已發 PR，標題格式：學號_姓名_week07
