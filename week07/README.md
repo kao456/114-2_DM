@@ -128,7 +128,7 @@ plt.show()
 
 ### 最小平方法（Least Squares）
 
-> 最小平方法的目標：找到一條直線 $\hat{y} = \beta x + \alpha$，讓所有資料點到直線的**誤差平方和**最小。
+> 最小平方法的目標：找到一條直線 $\hat{y} = \beta x + \alpha$ ，讓所有資料點到直線的**誤差平方和**最小。
 
 **數學公式**：
 
@@ -279,7 +279,7 @@ $$\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon}$$
 
 其中：
 - $\mathbf{X}$：特徵矩陣（每列一筆資料，每行一個特徵，最前面加一行全 1 代表截距）
-- $\boldsymbol{\beta}$：係數向量 $[\alpha, \beta_1, \beta_2, \beta_3]^T$（要求解的未知數）
+- $\boldsymbol{\beta}$ ：係數向量 $[\alpha, \beta_1, \beta_2, \beta_3]^T$ （要求解的未知數）
 - $\mathbf{y}$：實際值向量
 - $\boldsymbol{\epsilon}$：誤差向量
 
@@ -312,7 +312,7 @@ $$\mathbf{X}^T \mathbf{X} = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 10 & 20 & 30 & 40 \
 
 $$\mathbf{X}^T \mathbf{y} = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 10 & 20 & 30 & 40 \\ 5 & 10 & 5 & 10 \end{bmatrix} \begin{bmatrix} 8 \\ 13 \\ 14 \\ 19 \end{bmatrix} = \begin{bmatrix} 54 \\ 1550 \\ 435 \end{bmatrix}$$
 
-驗算：$1 \times 8 + 1 \times 13 + 1 \times 14 + 1 \times 19 = 54$ ✓
+驗算： $1 \times 8 + 1 \times 13 + 1 \times 14 + 1 \times 19 = 54$ ✓
 
 **Step 4：求解 $\boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$**
 
