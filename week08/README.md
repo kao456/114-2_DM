@@ -31,6 +31,8 @@
 import matplotlib
 import matplotlib.font_manager as fm
 !wget -q -O TaipeiSansTCBeta-Regular.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
+# 若 Google Drive 連不上，改用 repo 內的備份：
+# !cp data/TaipeiSansTCBeta-Regular.ttf .
 fm.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')  # 註冊台北黑體到 matplotlib
 matplotlib.rc('font', family='Taipei Sans TC Beta')      # 設定為預設字型
 ```
