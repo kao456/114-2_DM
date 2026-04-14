@@ -26,6 +26,8 @@
 
 用一組簡單的廣告資料，示範從資料到模型的完整流程。
 
+**Cell 1：匯入套件與建立資料**
+
 ```python
 import numpy as np
 import pandas as pd
@@ -40,12 +42,17 @@ ad_spend = np.random.uniform(10, 100, 50)  # 廣告花費（萬元）
 sales = 2.5 * ad_spend + np.random.normal(0, 15, 50) + 30  # 銷售額（萬元）
 df = pd.DataFrame({'ad_spend': ad_spend, 'sales': sales})
 
-# === Step 1：資料切割 ===
+# === 資料切割 ===
 X = df[['ad_spend']]
 y = df['sales']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+print(f'訓練集：{X_train.shape[0]} 筆，測試集：{X_test.shape[0]} 筆')
+```
 
-# === Step 2：訓練模型 ===
+**Cell 2：訓練模型 + 預測 + 評估**
+
+```python
+# === 訓練模型 ===
 model = LinearRegression()
 model.fit(X_train, y_train)
 
@@ -53,16 +60,20 @@ print(f'斜率 (coefficient): {model.coef_[0]:.4f}')
 print(f'截距 (intercept):   {model.intercept_:.4f}')
 print(f'迴歸公式：sales = {model.coef_[0]:.2f} × ad_spend + {model.intercept_:.2f}')
 
-# === Step 3：預測與評估 ===
+# === 預測 ===
 y_pred_train = model.predict(X_train)
 y_pred_test = model.predict(X_test)
 
+# === 評估 ===
 print(f'\n訓練 R²: {r2_score(y_train, y_pred_train):.4f}')
 print(f'測試 R²: {r2_score(y_test, y_pred_test):.4f}')
 print(f'訓練 RMSE: {np.sqrt(mean_squared_error(y_train, y_pred_train)):.4f}')
 print(f'測試 RMSE: {np.sqrt(mean_squared_error(y_test, y_pred_test)):.4f}')
+```
 
-# === Step 4：視覺化 ===
+**Cell 3：視覺化**
+
+```python
 plt.figure(figsize=(8, 5))
 plt.scatter(X_test, y_test, color='blue', label='Actual')
 # 排序後畫線，避免鋸齒
@@ -96,6 +107,8 @@ plt.show()
 
 從主題 1 的單一特徵擴展為三個廣告管道，示範多元迴歸的優勢。
 
+**Cell 4：建立多管道資料**
+
 ```python
 # === 擴展資料：三個廣告管道 ===
 np.random.seed(42)
@@ -115,7 +128,12 @@ df_multi['sales'] = (
 X = df_multi[['tv_spend', 'radio_spend', 'web_spend']]
 y = df_multi['sales']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+print(f'資料筆數：{n}，特徵數：{X.shape[1]}')
+```
 
+**Cell 5：簡單 vs 多元迴歸比較**
+
+```python
 # === 簡單迴歸（只用 tv_spend）===
 lr_simple = LinearRegression()
 lr_simple.fit(X_train[['tv_spend']], y_train)
@@ -158,6 +176,8 @@ print(f'  截距: {lr_multi.intercept_:.4f}')
 
 用經典的 Titanic 資料，示範從特徵處理到模型評估的完整流程。
 
+**Cell 6：載入 Titanic 資料 + 訓練羅吉斯迴歸**
+
 ```python
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
@@ -195,13 +215,18 @@ for name, coef in zip(X.columns, pipe.named_steps['lr'].coef_[0]):
 # === 分類報告 ===
 print('\n=== Classification Report ===')
 print(classification_report(y_test, y_pred))
+```
 
-# === 混淆矩陣 + ROC 曲線 ===
+**Cell 7：混淆矩陣 + ROC 曲線**
+
+```python
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
+# 混淆矩陣
 ConfusionMatrixDisplay.from_predictions(y_test, y_pred, ax=axes[0])
 axes[0].set_title('Confusion Matrix')
 
+# ROC 曲線
 y_prob = pipe.predict_proba(X_test)[:, 1]
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 roc_auc = auc(fpr, tpr)
@@ -216,6 +241,8 @@ axes[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.show()
+
+print(f'\nAUC = {roc_auc:.3f}')
 ```
 
 ### 課堂重點提問
