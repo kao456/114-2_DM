@@ -30,18 +30,24 @@
 
 ```python
 # === 安裝中文字型（Colab 環境需要，只要跑一次）===
-import subprocess, matplotlib
+import subprocess, os, matplotlib
+# 安裝 Google Noto 中日韓字型
 subprocess.run(['apt-get', '-qq', '-y', 'install', 'fonts-noto-cjk'], capture_output=True)
-matplotlib.font_manager._load_fontmanager(try_read_cache=False)  # 重新載入字型快取
+# 刪除 matplotlib 字型快取，強制重建（這是 Colab 最可靠的方式）
+cache_dir = matplotlib.get_cachedir()
+for f in os.listdir(cache_dir):
+    if f.startswith('fontlist'):
+        os.remove(os.path.join(cache_dir, f))
+matplotlib.font_manager.fontManager = matplotlib.font_manager.FontManager()  # 重建字型管理器
 
 # 匯入需要的套件
 import numpy as np                        # 數學運算（亂數、開根號等）
 import pandas as pd                       # 表格資料處理
 import matplotlib.pyplot as plt           # 繪圖
 
-# 設定中文字型（安裝後才能生效）
-plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'SimHei']
-plt.rcParams['axes.unicode_minus'] = False   # 負號正常顯示
+# 設定中文字型
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC']  # 使用剛裝好的字型
+plt.rcParams['axes.unicode_minus'] = False               # 負號正常顯示
 from sklearn.linear_model import LinearRegression       # 線性迴歸模型
 from sklearn.model_selection import train_test_split    # 資料切割（訓練集/測試集）
 from sklearn.metrics import r2_score, mean_squared_error  # 評估指標（R²、MSE）
