@@ -1,0 +1,63 @@
+姓名：高煜欽
+學號：C113181113
+
+=== 完整程式碼 ===
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+# 讀取資料
+df = pd.read_csv('data/Ship_Performance_Dataset.csv')
+# 設定目標變數 (Y)
+y = df['Operational_Cost_USD']
+# X: Engine_Power_kW
+X_simple = df[['Engine_Power_kW']] 
+X_train_s, X_test_s, y_train, y_test = train_test_split(X_simple, y, test_size=0.2, random_state=42)
+model_simple = LinearRegression()
+model_simple.fit(X_train_s, y_train)
+y_train_pred_s = model_simple.predict(X_train_s)
+y_test_pred_s = model_simple.predict(X_test_s)
+=== 簡單迴歸結果 ===
+使用特徵：Engine_Power_kW
+斜率：f"斜率: {model_simple.coef_[0]:.4f}
+截距: {model_simple.intercept_:.4f}"  
+迴歸公式：Cost = {model_simple.coef_[0]:.4f} × Engine_Power_kW + {model_simple.intercept_:.4f}
+訓練 R²：{r2_score(y_train, y_train_pred_s):.4f}  測試 R²：{r2_score(y_test, y_test_pred_s):.4f}
+訓練 RMSE：{np.sqrt(mean_squared_error(y_train, y_train_pred_s)):.4f} 測試 RMSE：{np.sqrt(mean_squared_error(y_test, y_test_pred_s)):.4f}
+
+=== 多元迴歸結果 ===
+各特徵迴歸係數：（列出 5 個）
+# 定義多個特徵欄位
+features = ['Engine_Power_kW', 'Cargo_Weight_tons', 'Distance_Traveled_nm', 'Speed_Over_Ground_knots', 'Draft_meters']
+X_multi = df[features]
+
+# 分割資料集 (使用與簡單迴歸相同的分割邏輯)
+X_train_m, X_test_m, y_train_m, y_test_m = train_test_split(X_multi, y, test_size=0.2, random_state=42)
+
+# 訓練多元模型
+model_multi = LinearRegression()
+model_multi.fit(X_train_m, y_train_m)
+
+# 預測
+y_train_pred_m = model_multi.predict(X_train_m)
+y_test_pred_m = model_multi.predict(X_test_m)
+
+# 輸出結果
+print("\n=== 多元迴歸結果 ===")
+print("各特徵迴歸係數:")
+for f, coef in zip(features, model_multi.coef_):
+    print(f"{f}: {coef:.4f}")
+
+print(f"\n訓練 R^2: {r2_score(y_train_m, y_train_pred_m):.4f}, 測試 R^2: {r2_score(y_test_m, y_test_pred_m):.4f}")
+print(f"訓練 RMSE: {np.sqrt(mean_squared_error(y_train_m, y_train_pred_m)):.4f}, 測試 RMSE: {np.sqrt(mean_squared_error(y_test_m, y_test_pred_m)):.4f}")
+
+=== 簡單 vs 多元比較 ===
+R² 差了多少？RMSE 差了多少？為什麼？
+預期結果：你會發現多元迴歸的 $R^2$ 上升（解釋力變好），RMSE 下降（預測誤差變小）。
+原因說明：資訊量不同：簡單迴歸假設只有「引擎功率」影響成本，但實際航運中，「貨物重量」和「航行距離」對營運成本有顯著影響。
+多元迴歸納入了這些變數，能捕捉到更多隱藏在數據中的模式，因此能更精確地擬合資料，減少預測誤差。
+
+哪個特徵對營運成本的影響最大？
+關鍵技術點：不能只比較原始係數 (model_multi.coef_)。
+原因：因為不同欄位的單位不同（例如功率是 kW，重量是 tons）。如果欄位數值範圍差異很大，係數也會不同。
