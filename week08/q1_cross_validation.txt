@@ -1,0 +1,61 @@
+姓名：高煜欽
+學號：C113181113
+
+=== 完整程式碼 ===
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+
+# 1. 載入資料
+data = load_breast_cancer()
+X = pd.DataFrame(data.data, columns=data.feature_names)
+y = data.target
+
+# 2. 設定模型
+models = {
+    'LogisticRegression': LogisticRegression(max_iter=5000),
+    'KNN': KNeighborsClassifier(),
+    'SVC': SVC(),
+    'DecisionTree': DecisionTreeClassifier(random_state=42)
+}
+
+results = {}
+cv_scores_list = [] # 用於畫圖
+
+# 3. 交叉驗證
+print("=== 交叉驗證結果 ===")
+for name, model in models.items():
+    pipe = Pipeline([('scaler', StandardScaler()), ('clf', model)])
+    scores = cross_val_score(pipe, X, y, cv=5, scoring='accuracy')
+    results[name] = scores.mean()
+    cv_scores_list.append(scores)
+    print(f"{name}: 5 次分數={scores}, 平均={scores.mean():.4f}, 標準差={scores.std():.4f}")
+
+# 4. 找出最佳模型
+best_model = max(results, key=results.get)
+print(f"\n=== 最佳模型 ===")
+print(f"最佳模型: {best_model}")
+print(f"平均準確率: {results[best_model]:.4f}")
+
+# 5. 繪製圖表 (箱型圖)
+plt.figure(figsize=(10, 6))
+plt.boxplot(cv_scores_list, labels=models.keys())
+plt.title('Comparison of Cross-Validation Scores')
+plt.ylabel('Accuracy')
+plt.show()
+=== 交叉驗證結果 ===
+LogisticRegression: 5 次分數=[0.9649 0.9649 0.9912 0.9737 0.9737], 平均=0.9737, 標準差=0.0100
+KNN: 5 次分數=[0.9561 0.9649 0.9737 0.9649 0.9649], 平均=0.9649, 標準差=0.0058
+SVC: 5 次分數=[0.9649 0.9737 0.9825 0.9737 0.9825], 平均=0.9755, 標準差=0.0066
+DecisionTree: 5 次分數=[0.9211 0.9298 0.9561 0.9386 0.9298], 平均=0.9351, 標準差=0.0121
+
+=== 最佳模型 ===
+最佳模型：SVC
+平均準確率：0.9755
